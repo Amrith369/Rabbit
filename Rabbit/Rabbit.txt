@@ -1,0 +1,33 @@
+Rabbit
+
+>Sprites
+    > 4 Directions + Idle
+    > x Evolutions
+    > Elder Rabbit Sprite
+    > Grass (Item)
+    > Carrot (Item)
+    > Rabbit Title Sprite
+> Tiles
+    > Grass (Plain)
+    > Grass Clumps (8)
+    > Grass w/Flowers (3)
+    > Grass w/Dirt (8)
+> Sound FX
+    > Movement In Grass
+    > Eat Grass
+    > Eat Carrot
+    > Elder Appearance
+    > Evolution
+    > Button Select
+> Music
+    > Menu
+    > Main Stage
+    > Credits
+> Code
+    > Rabbit Swarm Movement
+    > Map Edge Generation/Deletion
+    > Item Generation
+    > Rabbit Evolution
+    > Scene/Menu Change
+    > Score Tally (Score Achievements For Numbers (42, 69, 420, 2020, 12020)?)
+    > Sound/Music Control

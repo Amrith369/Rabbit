@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sprites/Items/grass_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Items/shadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Items/grass_2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Items/grass_3.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.647059 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+speed_scale = 0.3
+playing = true

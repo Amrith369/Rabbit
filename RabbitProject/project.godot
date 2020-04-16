@@ -16,8 +16,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Rabbit"
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/MainScene.tscn"
+config/icon="res://rabbit_ico.png"
+
+[display]
+
+window/size/width=640
+window/size/height=640
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0588235, 0.0313726, 0.117647, 1 )
 environment/default_environment="res://default_env.tres"

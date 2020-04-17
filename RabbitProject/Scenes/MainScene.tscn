@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Tiles/TileMap/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/carrot_item.tscn" type="PackedScene" id=2]
@@ -6,14 +6,41 @@
 [ext_resource path="res://Scenes/RabbitPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scripts/terrain_gen.gd" type="Script" id=5]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends TileMap
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 101 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 133, 14 )
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 5 )
+map_size_in_tiles = Vector2( 7, 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 1, 0, 2, 3, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 8, 0, 65538, 4, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 7, 0, 131074, 5, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 1, 0, 65540, 0, 0, 65541, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0 )
+script = SubResource( 1 )
 
 [node name="Carrot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 112 )
@@ -23,4 +50,33 @@ visible = false
 position = Vector2( 112, 16 )
 
 [node name="RabbitPlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 58, 74 )
+position = Vector2( 96, 97 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 94 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -10, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 0, -114 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 91, 92 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( 0, 114 )
+collision_layer = 1048575
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 91, 92 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 0, 94 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 202, 0 )
+shape = SubResource( 2 )

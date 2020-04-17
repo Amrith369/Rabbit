@@ -19,7 +19,7 @@ func _process(_delta):
 		return
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
-			print("Moving: ", dir)
+			#print("Moving: ", dir)
 			move(dir)
 			
 

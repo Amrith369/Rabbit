@@ -23,7 +23,7 @@ func gen_side():
 				_tilemap.set_cell(x+holder,y, -1)
 	for x in [6]:
 		for y in range(0, 6):
-			_tilemap.set_cell(x+holder, y, randi()%2)
+			_tilemap.set_cell(x+holder, y, randi()%3)
 	_tilemap.position.x-=32
 	holder+=1
 func _process(delta):
@@ -31,4 +31,5 @@ func _process(delta):
 	if time >= timer:
 		gen_side()
 		time = 0
+	
 		

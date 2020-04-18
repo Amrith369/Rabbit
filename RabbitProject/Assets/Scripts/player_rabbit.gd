@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 var tile_size = 32
 var inputs = {"ui_right": Vector2.RIGHT,
@@ -7,6 +7,7 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_down": Vector2.DOWN}
 onready var tween = $Tween
 export var sped = 2
+var velo = Vector2()
 
 
 
@@ -20,8 +21,7 @@ func _process(_delta):
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
 			#print("Moving: ", dir)
-			move(dir)
-			
+			move(dir)		
 
 func move_tween(dir):
 	tween.interpolate_property(self, "position",

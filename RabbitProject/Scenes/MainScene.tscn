@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Tiles/TileMap/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/carrot_item.tscn" type="PackedScene" id=2]
@@ -25,12 +25,6 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 101 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 133, 14 )
-
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 5 )
 map_size_in_tiles = Vector2( 7, 7 )
@@ -46,37 +40,7 @@ script = SubResource( 1 )
 position = Vector2( 80, 112 )
 
 [node name="Node2D" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 112, 16 )
 
 [node name="RabbitPlayer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 97 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 0, 94 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -10, 0 )
-shape = SubResource( 2 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 0, -114 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 91, 92 )
-shape = SubResource( 3 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( 0, 114 )
-collision_layer = 1048575
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2( 91, 92 )
-shape = SubResource( 3 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 0, 94 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 202, 0 )
-shape = SubResource( 2 )

@@ -7,27 +7,33 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_down": Vector2.DOWN}
 onready var tween = $Tween
 export var sped = 2
-var playerloc = $".".position
+#var playerloc = Vector2(30,2)
+onready var velo = Vector2(0, 0)
 
 
 
 func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
+	
 
-func _process(_delta):
+func _process(delta):
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
-		if Input.is_action_pressed(dir)&& playerloc.x>=32 && playerloc.y<=32:
-			#print("Moving: ", dir)
+		if Input.is_action_pressed(dir):
+#			print("Moving: ", playerloc)
 			move(dir)		
 
 func move_tween(dir):
-	tween.interpolate_property(self, "position",
-		position, (position + dir * tile_size),
-		1.0/sped, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
-	tween.start()
+	var collision = move_and_slide(velo * 1)
+	if collision:
+		return
+	else:
+		tween.interpolate_property(self, "position",
+			position, (position + dir * tile_size),
+			1.0/sped, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
+		tween.start()
 func move(dir):
 	#print(position)
 	#print(inputs[dir] * (tile_size))

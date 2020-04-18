@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Tiles/TileMap/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/carrot_item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/grass_item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/RabbitPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scripts/terrain_gen.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Tiles/TileMap/barrier.tres" type="TileSet" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends TileMap
@@ -44,3 +45,10 @@ position = Vector2( 112, 16 )
 
 [node name="RabbitPlayer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 97 )
+
+[node name="Barrier" type="TileMap" parent="."]
+z_as_relative = false
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65537, 1, 0, -131066, 1, 0, -2, 1, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 1, 0, 65535, 0, 0, 6, 0, 0, 131071, 0, 0, 65542, 0, 0, 196607, 0, 0, 131078, 0, 0, 262143, 0, 0, 196614, 0, 0, 327679, 0, 0, 262150, 0, 0, 393215, 0, 0, 327686, 0, 0, 458750, 1, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 1, 0, 524287, 1, 0, 458758, 1, 0 )

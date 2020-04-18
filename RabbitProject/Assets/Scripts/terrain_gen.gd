@@ -31,5 +31,6 @@ func _process(delta):
 	if time >= timer:
 		gen_side()
 		time = 0
+	#print(playerloc.position)
 	
 		

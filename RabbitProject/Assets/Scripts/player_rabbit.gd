@@ -7,7 +7,7 @@ var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_down": Vector2.DOWN}
 onready var tween = $Tween
 export var sped = 2
-var velo = Vector2()
+var playerloc = $".".position
 
 
 
@@ -19,7 +19,7 @@ func _process(_delta):
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
-		if Input.is_action_pressed(dir):
+		if Input.is_action_pressed(dir)&& playerloc.x>=32 && playerloc.y<=32:
 			#print("Moving: ", dir)
 			move(dir)		
 

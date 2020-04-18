@@ -10,20 +10,44 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends TileMap
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
+const timer = 1
+var time=0
+var rani = 0
+var f =1
+var comp =0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+func gen_items():
+	print(get_node(\".\").get_child_count())
+	rani = randi()%255
+	if get_node(\".\").get_child_count() <12:
+		if rani <= 100:
+			var grass = load(\"res://Scenes/grass_item.tscn\")
+			var grass_item= grass.instance()
+			add_child_below_node(get_node(\".\"),grass_item)
+			grass_item.set_name(\"grass\" + str(f))
+			grass_item.position = Vector2((-1*get_node(\".\").position.x)+16+(randi()%6*32),16+randi()%6*32)
+			f +=1
+	elif get_node(\".\").get_child_count() >=12:
+		print(\"Execute Order 66!\")
+		for n in get_node(\".\").get_children():
+			if n.position.x < (-1*get_node(\".\").position.x):
+				print(\"Deleting The Children!\")
+				get_node(\".\").remove_child(n)
+				n.queue_free()
+	comp+=1
+#	print(get_children())
+#	for child in get_node(\".\").get_child_count():
+#		print(get_parent())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	time += delta
+	if time >= timer:
+		gen_items()
+		time = 0
 "
 
 [node name="MainScene" type="Node2D"]
@@ -40,7 +64,7 @@ script = SubResource( 1 )
 [node name="Carrot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 112 )
 
-[node name="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Grass" parent="." instance=ExtResource( 3 )]
 position = Vector2( 112, 16 )
 
 [node name="RabbitPlayer" parent="." instance=ExtResource( 4 )]
@@ -52,3 +76,9 @@ tile_set = ExtResource( 6 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, 65534, 0, 0, 65535, 0, 0, 6, 0, 0, 7, 0, 0, 131070, 0, 0, 131071, 0, 0, 65542, 0, 0, 65543, 0, 0, 196606, 0, 0, 196607, 0, 0, 131078, 0, 0, 131079, 0, 0, 262142, 0, 0, 262143, 0, 0, 196614, 0, 0, 196615, 0, 0, 327678, 0, 0, 327679, 0, 0, 262150, 0, 0, 262151, 0, 0, 393214, 0, 0, 393215, 0, 0, 327686, 0, 0, 327687, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 96, 96 )
+current = true
+zoom = Vector2( 0.37, 0.37 )
+[connection signal="body_entered" from="Grass" to="RabbitPlayer" method="_on_Grass_body_entered"]

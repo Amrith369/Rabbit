@@ -18,7 +18,7 @@ func _ready():
 	position += Vector2.ONE * tile_size/2
 	
 
-func _process(delta):
+func _process(_delta):
 	if tween.is_active():
 		return
 	for dir in inputs.keys():
@@ -43,7 +43,7 @@ func move_tween(dir):
 		Vector2(0,-1):
 			ray.cast_to=Vector2(0,-32)
 	ray.force_raycast_update()
-	var collision = move_and_collide(velo * 1)
+	var _collision = move_and_collide(velo * 1)
 	if ray.is_colliding():
 		tween.interpolate_property(self, "position",
 			position, (position +(-2*ray.position)),
@@ -65,3 +65,11 @@ func move(dir):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+
+
+
+
+func _on_Grass_body_entered(body):
+	pass

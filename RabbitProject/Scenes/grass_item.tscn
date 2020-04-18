@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Sprites/Items/grass_1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Items/shadow.png" type="Texture" id=3]
@@ -13,7 +13,9 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Grass" type="Area2D"]
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.647059 )
@@ -21,5 +23,9 @@ texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+frame = 1
 speed_scale = 0.3
 playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

@@ -16,6 +16,7 @@ texture = ExtResource( 1 )
 [node name="StaticBody2D" type="StaticBody2D" parent="1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1/StaticBody2D"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="2" type="Sprite" parent="."]

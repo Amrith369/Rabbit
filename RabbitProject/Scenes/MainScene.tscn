@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Tiles/TileMap/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/carrot_item.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/grass_item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/RabbitPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scripts/terrain_gen.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Tiles/TileMap/barrier.tres" type="TileSet" id=6]
@@ -18,6 +17,7 @@ var comp =0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	pass # Replace with function body.
 func gen_items():
 	print(get_node(\".\").get_child_count())
@@ -64,9 +64,6 @@ script = SubResource( 1 )
 [node name="Carrot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 112 )
 
-[node name="Grass" parent="." instance=ExtResource( 3 )]
-position = Vector2( 112, 16 )
-
 [node name="RabbitPlayer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 97 )
 
@@ -81,4 +78,3 @@ tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0,
 position = Vector2( 96, 96 )
 current = true
 zoom = Vector2( 0.37, 0.37 )
-[connection signal="body_entered" from="Grass" to="RabbitPlayer" method="_on_Grass_body_entered"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/MISC/AmaticSC-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/MISC/Economica-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Scripts/credits.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 58
+font_data = ExtResource( 2 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Holder" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+
+[node name="Credits" type="Label" parent="Holder"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -67.5
+margin_top = 16.0
+margin_right = 67.5
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 1 )
+text = "Credits:"
+align = 1
+
+[node name="GameDesigners" type="Label" parent="Holder/Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.0
+margin_top = 64.5
+margin_right = 351.0
+margin_bottom = 383.5
+custom_fonts/font = SubResource( 2 )
+text = "=Team=
+Amrith  |   Jacob	  |  Tigerish
+
+=Music=
+Windswept by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/4629-windswept
+License: http://creativecommons.org/licenses/by/4.0/"
+align = 1
+
+[node name="Menu" type="Button" parent="Holder/Credits"]
+margin_top = 480.0
+margin_right = 132.0
+margin_bottom = 554.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.454902, 0.862745, 0.364706, 1 )
+custom_colors/font_color_pressed = Color( 0.886275, 0.705882, 0.101961, 1 )
+text = "Return~"
+flat = true
+[connection signal="pressed" from="Holder/Credits/Menu" to="." method="_on_Menu_pressed"]

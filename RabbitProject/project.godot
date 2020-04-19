@@ -19,6 +19,11 @@ config/name="Rabbit"
 run/main_scene="res://Scenes/MainScene.tscn"
 config/icon="res://rabbit_ico.png"
 
+[autoload]
+
+global_operations="*res://Assets/Scripts/global_operations.gd"
+MusicControl="*res://Scenes/MusicControl.tscn"
+
 [display]
 
 window/size/width=640

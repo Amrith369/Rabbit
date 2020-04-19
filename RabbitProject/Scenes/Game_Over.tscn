@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/MISC/AmaticSC-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/MISC/Economica-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Scripts/game_over.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/Rabbits/Old_rabbit.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 86
+outline_size = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 52
+font_data = ExtResource( 2 )
+
+[node name="Game Over" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = 121.0
+margin_right = 127.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.572549, 1, 0.133333, 1 )
+custom_colors/font_color_pressed = Color( 0.933333, 0.698039, 0.0745098, 1 )
+text = "Begin Again!"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="Label" parent="Start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -161.0
+margin_top = -153.0
+margin_right = 1012.0
+margin_bottom = 105.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Now don't you worry sonny! You may be taking on water, 
+but your ship doesn't necessarily have to go down!
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="Start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = 41.0
+margin_right = 127.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.572549, 1, 0.133333, 1 )
+custom_colors/font_color_pressed = Color( 0.933333, 0.698039, 0.0745098, 1 )
+text = "Retire"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="High Score" type="Label" parent="Start"]
+margin_left = -160.0
+margin_top = -416.0
+margin_right = 31.0
+margin_bottom = -355.0
+custom_fonts/font = SubResource( 3 )
+text = "Total Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Start/High Score"]
+margin_left = 192.0
+margin_right = 383.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Start"]
+position = Vector2( 112, -208 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Start/Quit" to="." method="_on_Quit_pressed"]

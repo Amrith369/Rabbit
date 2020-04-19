@@ -19,15 +19,25 @@ func _ready():
 	
 
 func _process(_delta):
-	if tween.is_active():
-		return
-	for dir in inputs.keys():
-		if Input.is_action_pressed(dir):
-#			print("Moving: ", playerloc)
-			move(dir)		
-
+	match global_operations.evo_stage:
+		0:
+			$R_1.show()
+		1:
+			$R_2.show()
+			$R_1.hide()
+		2:
+			$R_3.show()
+			$R_2.hide()
+	if global_operations.playing==true:
+		if tween.is_active():
+			return
+		for dir in inputs.keys():
+			if Input.is_action_pressed(dir):
+	#			print("Moving: ", playerloc)
+				move(dir)		
+	else: return
 func move_tween(dir):
-	print(dir)
+#	print(dir)
 	match dir:
 		Vector2(0,0):
 			pass
@@ -44,13 +54,14 @@ func move_tween(dir):
 			ray.cast_to=Vector2(0,-32)
 	ray.force_raycast_update()
 	var _collision = move_and_collide(velo * 1)
+		
 	if ray.is_colliding():
 		tween.interpolate_property(self, "position",
 			position, (position +(-2*ray.position)),
 			1.0/sped, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
 		tween.start()
 	else:
-		position = position +(dir)
+#		position = position +(dir)
 		tween.interpolate_property(self, "position",
 			position, (position + dir * tile_size),
 			1.0/sped, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
@@ -65,11 +76,3 @@ func move(dir):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-
-
-
-
-func _on_Grass_body_entered(body):
-	pass

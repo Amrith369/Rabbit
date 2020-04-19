@@ -16,7 +16,9 @@ _global_script_class_icons={
 [application]
 
 config/name="Rabbit"
-run/main_scene="res://Scenes/MainScene.tscn"
+run/main_scene="res://Scenes/Title_Screen.tscn"
+boot_splash/image="res://rabbit_ico.png"
+boot_splash/bg_color=Color( 0.584314, 0.847059, 0.45098, 1 )
 config/icon="res://rabbit_ico.png"
 
 [autoload]
